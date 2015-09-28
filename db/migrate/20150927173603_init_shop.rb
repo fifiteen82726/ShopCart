@@ -7,6 +7,7 @@ class InitShop < ActiveRecord::Migration
 
   	end
   	create_table :items do |t|
+  		t.integer :status, :limit => 1, :null => false, :default => 0
   		t.string :name
   		t.integer :price
   		t.text :descript
@@ -25,9 +26,11 @@ class InitShop < ActiveRecord::Migration
   	create_table :order_items do |t|
   		t.integer :order_id
   		t.integer :item_id
-  		t,integer :user_id
+  		t.integer :user_id
   		t.integer :price, :null => false
 	end
+
+  add_index :order_items, [:order_id]
 
 
 end

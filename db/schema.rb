@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150927172638) do
+ActiveRecord::Schema.define(version: 20150928075309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cates", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "status",             limit: 2, default: 0, null: false
+    t.string   "name"
+    t.integer  "price"
+    t.text     "descript"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.integer  "cate_id",                                  null: false
+  end
 
   create_table "managers", force: :cascade do |t|
     t.string   "email",              default: "", null: false
@@ -24,6 +45,22 @@ ActiveRecord::Schema.define(version: 20150927172638) do
   end
 
   add_index "managers", ["email"], name: "index_managers_on_email", unique: true, using: :btree
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "item_id"
+    t.integer "user_id"
+    t.integer "price",    null: false
+  end
+
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "status",     limit: 2, default: 0, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",              default: "", null: false
