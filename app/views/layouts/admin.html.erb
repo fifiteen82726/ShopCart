@@ -9,20 +9,15 @@
 <body>
 
 
-	<h1> 對外頁面:public</h1>
+	<h1>後台頁面 admin</h1>	
 
- <% if current_user %>
-<h1>Hi <%= current_user.email %> </h1> 
+ <% if current_manager %>
+<h1>Hi <%= current_manager.email %> </h1> 
 <hr>
 <%= link_to "log out", destroy_user_session_path, :method => 'delete' %>
 
-
-
- <% else %>
-
- <%= link_to "login", new_user_session_path %>
  <% end %>
- <%= link_to "register", new_user_registration_path %>
+ 
 
 <%= will_paginate @paginate if @paginate %>
 <hr>

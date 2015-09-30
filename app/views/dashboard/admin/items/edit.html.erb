@@ -1,6 +1,14 @@
 <h1>Editing Dashboard Admin Item</h1>
 
-<%= render 'form' %>
+<%#= render 'form' %>
+
+<%= form_for(@item , dashboard_admin_item, :method => 'patch') do |f| %>
+名稱 <%= f.text_field :name %> <br>
+價格 <%= f.number_field :price %> 
+<button type = 'submit'>新增資料</button>
+<% end %>
+
+
 
 <%= link_to 'Show', @dashboard_admin_item %> |
 <%= link_to 'Back', dashboard_admin_items_path %>
