@@ -1,9 +1,9 @@
-class Dashboard::Admin::ItemsController < Dashboard::Admin::AdminController
+class Dashboard::Admin::ItemsController < Dashboard::Admin::AdminController 
   before_action :set_dashboard_admin_item, only: [:show, :edit, :update, :destroy]
 
   # GET /dashboard/admin/items
   def index
-    @dashboard_admin_items = Item.all
+    @Items = Item.all
   end
 
   # GET /dashboard/admin/items/1
