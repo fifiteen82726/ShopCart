@@ -17,7 +17,7 @@
 <%= link_to "log out", destroy_user_session_path, :method => 'delete' %>
  <% end %>
 
- <ul>  <%= link_to "商品管理", dashboard_admin_item_path %> </ul>
+ <ul>  <%= link_to "商品管理", dashboard_admin_items_path %> </ul>
  
 
 <%= will_paginate @paginate if @paginate %>

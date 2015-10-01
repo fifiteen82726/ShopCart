@@ -3,7 +3,7 @@ class Dashboard::Admin::ItemsController < Dashboard::Admin::AdminController
 
   # GET /dashboard/admin/items
   def index
-    @Items = Item.all
+    @Items = @paginate = ::Item.paginate(:page => params[:page])
   end
 
   # GET /dashboard/admin/items/1
@@ -12,7 +12,8 @@ class Dashboard::Admin::ItemsController < Dashboard::Admin::AdminController
 
   # GET /dashboard/admin/items/new
   def new
-    @dashboard_admin_item = Dashboard::Admin::Item.new
+    #@dashboard_admin_item = Dashboard::Admin::Item.new
+    @Items = ::Item.new(item_params)
   end
 
   # GET /dashboard/admin/items/1/edit
@@ -21,10 +22,10 @@ class Dashboard::Admin::ItemsController < Dashboard::Admin::AdminController
 
   # POST /dashboard/admin/items
   def create
-    @dashboard_admin_item = Dashboard::Admin::Item.new(dashboard_admin_item_params)
+    @Items = ::Item.new(item_params)
 
-    if @dashboard_admin_item.save
-      redirect_to @dashboard_admin_item, notice: 'Item was successfully created.'
+    if @Items.save
+      redirect_to @Items, notice: 'Item was successfully created.'
     else
       render :new
     end
