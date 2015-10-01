@@ -3,7 +3,8 @@ class Dashboard::Admin::ItemsController < Dashboard::Admin::AdminController
 
   # GET /dashboard/admin/items
   def index
-    @Items = @paginate = ::Item.paginate(:page => params[:page])
+    # id DESC 是說id 會從後面排回來,後台通常這樣,新產生的在前面
+    @Items = @paginate = ::Item.order('id DESC').paginate(:page => params[:page])
   end
 
   # GET /dashboard/admin/items/1
@@ -18,6 +19,7 @@ class Dashboard::Admin::ItemsController < Dashboard::Admin::AdminController
 
   # GET /dashboard/admin/items/1/edit
   def edit
+    @item = ::Item.find(params[:id])
   end
 
   # POST /dashboard/admin/items
@@ -33,11 +35,10 @@ class Dashboard::Admin::ItemsController < Dashboard::Admin::AdminController
 
   # PATCH/PUT /dashboard/admin/items/1
   def update
-    if @dashboard_admin_item.update(dashboard_admin_item_params)
-      redirect_to @dashboard_admin_item, notice: 'Item was successfully updated.'
-    else
-      render :edit
-    end
+    @item = ::Item.find(params[:id])
+    @item.update(item_params)
+    redirect_to dashboard_admin_items_path
+    
   end
 
   # DELETE /dashboard/admin/items/1
@@ -49,11 +50,11 @@ class Dashboard::Admin::ItemsController < Dashboard::Admin::AdminController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dashboard_admin_item
-      @dashboard_admin_item = Dashboard::Admin::Item.find(params[:id])
+      @item = ::Item.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
-    def dashboard_admin_item_params
-      params[:dashboard_admin_item]
+    def item_params
+      params.require(:item).permit!
     end
 end
