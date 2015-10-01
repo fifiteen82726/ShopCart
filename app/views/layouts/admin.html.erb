@@ -15,8 +15,9 @@
 <h1>Hi <%= current_manager.email %> </h1> 
 <hr>
 <%= link_to "log out", destroy_user_session_path, :method => 'delete' %>
-
  <% end %>
+
+ <ul>  <%= link_to "商品管理", dashboard_admin_item_path %> </ul>
  
 
 <%= will_paginate @paginate if @paginate %>

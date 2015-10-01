@@ -8,4 +8,8 @@
 
 
 Manager.destroy_all
+User.destroy_all
+
 Manager.create(email: "hahaha@gmail.com", password: "2wsx1qaz")
+User.create(email: "123@gmail.com", password: "2wsx1qaz")
+

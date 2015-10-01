@@ -16,9 +16,9 @@
   <tbody>
     <% @dashboard_admin_items.each do |dashboard_admin_item| %>
       <tr>
-        <th><%= item.id %></th>
-        <th><%= item.name %></th>
-        <th><%= item.price %></th>
+        <th><%= dashboard_admin_item.id %></th>
+        <th><%#= dashboard_admin_item.name %></th>
+        <th><%= dashboard_admin_item.price %></th>
         <!-- <td><%#= link_to 'Show', dashboard_admin_item %></td> -->
         <td>
           <%= link_to 'Edit', edit_dashboard_admin_item_path(dashboard_admin_item) %>
