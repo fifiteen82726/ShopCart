@@ -3,8 +3,7 @@ class Dashboard::Admin::ItemsController < Dashboard::Admin::AdminController
 
   # GET /dashboard/admin/items
   def index
-    @dashboard_admin_items = Item.paginate(:page => params[:page])
-  
+    @dashboard_admin_items = Item.all
   end
 
   # GET /dashboard/admin/items/1
