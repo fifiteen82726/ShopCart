@@ -4,8 +4,9 @@ class Dashboard::Admin::ItemsController < Dashboard::Admin::AdminController
   # GET /dashboard/admin/items
   def index
     # id DESC 是說id 會從後面排回來,後台通常這樣,新產生的在前面
-    @Items = @paginate = ::Item.order('id DESC').paginate(:page => params[:page])
+    @Items = @paginate = ::Item.order('id DESC').includes(:cate).paginate(:page => params[:page])
   end
+  
 
   # GET /dashboard/admin/items/1
   def show
@@ -43,7 +44,7 @@ class Dashboard::Admin::ItemsController < Dashboard::Admin::AdminController
 
   # DELETE /dashboard/admin/items/1
   def destroy
-    @dashboard_admin_item.destroy
+    @item.destroy
     redirect_to dashboard_admin_items_url, notice: 'Item was successfully destroyed.'
   end
 

@@ -4,7 +4,9 @@
 
 <%= form_for(@item ,{:url => dashboard_admin_item_path, :method => 'patch'}) do |f| %>
 名稱 <%= f.text_field :name %> <br>
-價格 <%= f.number_field :price %> 
+價格 <%= f.number_field :price %> <br>
+圖片	<%= f.file_field  :cover %> <br>
+類別 <%= f.select :cate_id ,Cate.all.map{|c|[c.name,c.id]} %>
 <button type = 'submit'>新增資料</button>
 <% end %>
 
@@ -12,3 +14,5 @@
 
 <%= link_to 'Show', @dashboard_admin_item %> |
 <%= link_to 'Back', dashboard_admin_items_path %>
+
+
