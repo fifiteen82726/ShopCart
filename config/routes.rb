@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   resources :statics, :only => [:index]
   root "items#index"
 
-  resources :items, :only =>[:index, :show]
-
+  resources :items, :only =>[:index, :show] do
+    member do 
+      get :add_cart    
+    end
+  end
 
   # /statics/action/
 

@@ -15,16 +15,16 @@ Cate.destroy_all
 
 Manager.create(email: "hahaha@gmail.com", password: "2wsx1qaz")
 User.create(email: "123@gmail.com", password: "2wsx1qaz")
-Item.create(name: "awsome", price: 10000, status: 0, cate_id: 1)
+#Item.create(name: "awsome", price: 10000, status: 0, cate_id: 1)
 Cate.create(:name => "Super Cool")
 
 
-# 亂數新增 item & cate
+# 亂數新增 item 
 cate = Cate.first
 100.times do |i|
 	Item.create(:name => Faker::Address.state, :price => rand(1..3000), :cate => cate)
 end
-
+# 亂數新增 cate
 10.times do |c|
 	Cate.create(:name => Faker::Address.state)
 end

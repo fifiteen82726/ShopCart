@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
 	
   belongs_to :cate
+  
   has_attached_file :cover,
    styles:{
    original:"1024*1024>",
