@@ -1,5 +1,33 @@
 Rails.application.routes.draw do
   
+#   resources :products , :only =>[:show] do
+#   collection do
+#     get  :hi
+#     post :yo
+#   end
+# end
+
+# resources :products , :only =>[:show] do 
+#   member do
+#     get :sold
+#   end
+
+#   # 或
+#   #get :sold, :on => :member
+# end
+
+
+
+get "product/:id/sold" => 'products#sold'
+ 
+
+namespace :dashboard do
+  resources :orders, :only => [:index, :update]
+end
+
+
+
+#begin
   devise_for :managers
   devise_for :users
   resources :statics, :only => [:index]
@@ -31,7 +59,7 @@ Rails.application.routes.draw do
     end
   end
 
-
+end
 
 
 
@@ -89,4 +117,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+

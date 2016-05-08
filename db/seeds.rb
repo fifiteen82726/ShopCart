@@ -13,11 +13,13 @@ Item.destroy_all
 Cate.destroy_all
 
 
-Manager.create(email: "hahaha@gmail.com", password: "2wsx1qaz")
+Manager.create(email: "coda@gmail.com", password: "2wsx1qaz")
 User.create(email: "123@gmail.com", password: "2wsx1qaz")
 #Item.create(name: "awsome", price: 10000, status: 0, cate_id: 1)
 Cate.create(:name => "Super Cool")
 
+
+# Cate has_many Items
 
 # 亂數新增 item 
 cate = Cate.first
