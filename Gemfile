@@ -30,6 +30,7 @@ gem 'faker'
 gem 'turbolinks'
 
 
+
 gem 'grape'
 gem 'grape-swagger'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

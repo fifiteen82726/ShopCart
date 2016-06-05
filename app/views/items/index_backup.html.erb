@@ -1,11 +1,3 @@
-
-<%#= form_for Item.new do |f| %>
-  
-  <%= recaptcha_tags %>
-
-<%# end %>
-
-
 <!-- 執行 ajax加入購物車數量 -->
 
 
@@ -14,15 +6,15 @@
 
 <% content_for :header do  %>
 <script type="text/javascript">
-  jQuery(function($) {
-    // body...
-    $('.add_cart').click(function(){
-      $.getJSON('items/' +$(this).attr('data-value') +'/add_cart', function(json){
-        $('#cart_counter').html(json.counter);
-      });
-      return false;
-    });
-  });
+	jQuery(function($) {
+		// body...
+		$('.add_cart').click(function(){
+			$.getJSON('items/' +$(this).attr('data-value') +'/add_cart', function(json){
+				$('#cart_counter').html(json.counter);
+			});
+			return false;
+		});
+	});
 </script>
 <% end %>
 

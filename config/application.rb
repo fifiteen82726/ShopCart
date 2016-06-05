@@ -21,15 +21,15 @@ module Shop
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+   
+
     config.active_record.raise_in_transactional_callbacks = true
+
 
 
     cofing.paths.add File.join("app","api"), glob: File.join('**','*.rb')
     config.autoload_path += Dir[Rails.root.join('app','api','*')]
     # 自動載入所有 app/api下的東西 
-    
-
-
 
   end
 end
