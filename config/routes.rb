@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 #   #get :sold, :on => :member
 # end
 
+mount CuteV1::GrapeAPI => '/v1'
+#mount Twitter::GrapeAPI => '/v2'
 
 
 get "product/:id/sold" => 'products#sold'
@@ -31,7 +33,7 @@ end
   devise_for :managers
   devise_for :users
   resources :statics, :only => [:index]
-  root "items#index"
+  # root "items#index"
 
   resources :items, :only =>[:index, :show] do
     member do 

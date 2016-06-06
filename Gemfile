@@ -33,6 +33,9 @@ gem 'turbolinks'
 
 gem 'grape'
 gem 'grape-swagger'
+gem 'grape-entity'
+
+gem 'hashie-forbidden_attributes'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 #gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
