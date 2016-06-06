@@ -27,8 +27,9 @@ module Shop
 
 
 
-    cofing.paths.add File.join("app","api"), glob: File.join('**','*.rb')
-    config.autoload_path += Dir[Rails.root.join('app','api','*')]
+   config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+
     # 自動載入所有 app/api下的東西 
 
   end
